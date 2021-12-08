@@ -1,0 +1,280 @@
+// css img, button, heading, title, input, elements, components...
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none; //ngan chan ghost image
+  &.--center {
+    margin: 0 auto;
+    display: block;
+  }
+}
+a {
+  text-decoration: none;
+}
+// colors (tuỳ chỉnh)
+.--white-cl {
+  color: $white-cl;
+}
+.--black-cl {
+  color: $black-cl;
+}
+
+// css article (nội dung chi tiết bài viết)
+article {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: proB; // font bold
+    display: block;
+  }
+  h1 {
+    font-size: var(--h1-fs);
+    line-height: var(--h1-lh);
+    margin: 0 0 0.67rem 0;
+  }
+  h2 {
+    font-size: var(--h2-fs);
+    line-height: var(--h2-lh);
+    margin: 0 0 0.75rem 0;
+  }
+  h3 {
+    font-size: var(--h3-fs);
+    line-height: var(--h3-lh);
+    margin: 0 0 0.83rem 0;
+  }
+  h4 {
+    font-size: var(--h4-fs);
+    line-height: var(--h4-lh);
+    margin: 0 0 1.12rem 0;
+  }
+  h5 {
+    font-size: var(--h5-fs);
+    line-height: var(--h5-lh);
+    margin: 0 0 1.5rem 0;
+  }
+  h6 {
+    font-size: 0.67rem;
+    margin: 0 0 1.67rem 0;
+  }
+
+  p {
+    margin: 0 0 1.12rem 0;
+  }
+  strong {
+    font-family: proB; // font bold
+  }
+  ol,
+  ul {
+    list-style: initial;
+    padding-left: 18px;
+  }
+  img {
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 25px auto;
+  }
+  .video {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    margin: 25px auto;
+    iframe,
+    video {
+      position: absolute;
+      @include size(100%);
+      top: 0;
+      left: 0;
+    }
+  }
+  @include xs {
+    img {
+      margin: 20px auto;
+    }
+  }
+}
+
+.btn {
+  height: var(--height-button);
+  background-color: transparent;
+  border: 1.66px solid $white-cl;
+  @include mid(true);
+  display: inline-flex;
+  @include text(1.4rem, proB, 5.8rem, #fff, 0.28rem, uppercase);
+  width: fit-content;
+  padding: 0 50px;
+  gap: 0 15px;
+  position: relative;
+  cursor: pointer;
+  &.--second {
+    img {
+      @include transform(rotate(0deg));
+    }
+  }
+  &.--second:hover {
+    background-color: $yellow-cl;
+    @include transition($t);
+    img {
+      @include transform(rotate(360deg));
+      @include transition(transform 0.7s);
+    }
+  }
+  &.--primary {
+    img {
+      @include transform(translateX(0));
+      @include transition($t);
+    }
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: $yellow-cl;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      @include transform(scaleX(0));
+      @include transform-origin(right);
+      @include transition(transform $t cubic-bezier(0.79, 0.33, 0.16, 0.94));
+    }
+    &:hover {
+      &:before {
+        @include transform(scaleX(1));
+        @include transform-origin(left);
+      }
+      img {
+        @include transform(translateX(20px));
+      }
+    }
+  }
+  @include xs {
+    padding: 0 30px;
+  }
+}
+
+.textbox {
+  --wBefore: 75px;
+  --pdText: 95px;
+  padding-left: var(--pdText);
+  text-align: left;
+  &__heading {
+    &.--yellow {
+      color: $yellow-cl;
+    }
+    &.--white {
+      color: #fff;
+    }
+    @include text(
+      var(--h2-fs),
+      proB,
+      var(--h2-lh),
+      $black-cl,
+      0.28rem,
+      uppercase
+    );
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      @include transform(translateY(-50%));
+      width: var(--wBefore);
+      margin-left: calc(-1 * var(--pdText));
+      height: 2px;
+      background-color: #555;
+    }
+  }
+  &.--noline {
+    padding-left: 0;
+    max-width: 500px;
+    .textbox__heading {
+      &:before {
+        display: none;
+      }
+    }
+  }
+  &__desc {
+    margin: 10px 0 28px;
+    &.--white {
+      color: #fff;
+    }
+  }
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0 7px;
+    font-size: 14px;
+    font-family: proB;
+    color: $black-cl;
+    letter-spacing: 0.28rem;
+    text-transform: uppercase;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      @include size(37px, 2px);
+      background-color: $yellow-cl;
+    }
+    .arrow {
+      @include transform(translateX(0));
+      @include transition($t);
+    }
+    &:hover {
+      .arrow {
+        @include transform(translateX(10px));
+      }
+    }
+  }
+  &.--textright {
+    text-align: right;
+    padding-left: initial;
+    padding-right: var(--pdText);
+    .textbox__heading:before {
+      right: 0;
+      left: initial;
+      margin-right: calc(-1 * var(--pdText));
+    }
+  }
+  &.--textcenter {
+    max-width: 490px;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: initial;
+    .textbox__heading:before {
+      left: 50%;
+      top: calc(100% + 5px);
+      width: 40px;
+      background-color: $yellow-cl;
+      @include transform(translateX(-50%));
+      margin-left: initial;
+      margin-top: 2px;
+    }
+    .textbox__desc {
+      margin-top: 30px;
+    }
+  }
+  @include sm {
+    --pdText: 0;
+    &__heading {
+      &:before {
+        display: none;
+      }
+    }
+    &__desc {
+      margin-bottom: 20px;
+    }
+  }
+}

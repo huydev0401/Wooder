@@ -1,0 +1,36 @@
+// css navigator (Menu)
+.navbar {
+  width: 100vw;
+  height: 100vh;
+  background-color: $black-cl;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  @include transform(translateX(100%));
+  @include transition($t);
+  ul {
+    @include mid;
+    text-align: center;
+    li {
+      a {
+        display: inline-block;
+        padding: 20px 0;
+        @include text(1.5rem, proB, 2.2rem, #fff, 0.0375rem, uppercase);
+        @include transition($t);
+        &:hover {
+          color: $yellow-cl;
+        }
+      }
+    }
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    @include transform(translateX(0));
+  }
+}

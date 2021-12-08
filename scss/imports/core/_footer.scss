@@ -1,0 +1,39 @@
+// css footer
+footer {
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  background-color: $black-cl;
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+  .backtotop {
+    display: inline-block;
+    @include text(1.2rem, proB, normal, #b0b0b0, 0.06rem, uppercase);
+    @include transition($t);
+    &:hover {
+      color: $yellow-cl;
+    }
+  }
+  @include xs {
+    margin-top: initial;
+    .container {
+      flex-direction: column;
+    }
+    .logo {
+      margin: 10px auto;
+      position: initial;
+      left: initial;
+      @include transform(initial);
+    }
+  }
+}
