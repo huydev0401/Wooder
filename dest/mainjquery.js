@@ -46,7 +46,7 @@ $(window).on("load", function () {
   // New
   let btnNews = $(".new__btns .btn");
   btnNews.on("click", function () {
-    $(this).addClass("active").siblings().removeClass("active");
+    $(this).addClass("is-selected").siblings().removeClass("is-selected");
     $(".new__list")
       .eq($(this).index())
       .addClass("active")
