@@ -206,6 +206,9 @@
           flex-direction: column-reverse;
         }
       }
+      &__image {
+        width: 100%;
+      }
     }
   }
   .quality {

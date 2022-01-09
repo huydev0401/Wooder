@@ -155,6 +155,7 @@ $(window).on("load", function () {
     prevNextButtons: false,
     pageDots: false,
     lazyLoad: 4,
+    imagesLoaded: true,
   });
 
   let $progressBar = $(".progress-bar");
